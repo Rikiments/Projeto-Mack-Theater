@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Espetaculo {
     private String nome;
@@ -31,27 +30,32 @@ public class Espetaculo {
     }
 
     public Entrada novaEntrada(int tipo, int assento) {
-        int indice = 50 - assento;  // Converte o número do assento para o índice correto
-        if (indice < 0 || indice >= assentos.length || assentos[indice]) {
-            System.out.println("Assento já ocupado ou inválido!");
+        int totalAssentos = 50; // Total de assentos disponíveis (5 filas x 10 colunas)
+        
+        if (assento < 1 || assento > totalAssentos) {
+            System.out.println("Assento inválido. Escolha um número entre 1 e 50.");
             return null;
         }
-        marcarAssento(indice);
-        switch (tipo) {
-            case 1: return new EntradaInteira(assento, preco);
-            case 2: return new EntradaMeia(assento, preco);
-            case 3: return new EntradaProfessor(assento, preco);
-            default: return null;
+
+        // Verifica se o assento está ocupado
+        if (assentos[assento - 1]) {
+            System.out.println("Assento já ocupado.");
+            return null;
         }
+
+        // Marca o assento como ocupado
+        assentos[assento - 1] = true;
+
+        // Cria a nova entrada (subclasse concreta)
+        Entrada entrada = new EntradaInteira(assento, preco);  // exemplo com EntradaComum
+        return entrada;
     }
+
 
     public void marcarAssento(int assento) {
         assentos[assento] = true;
     }
 
-    public double getPreco() {
-        return preco;
-    }
 
     public String toString() {
         return nome + " - " + data + " - " + hora + " R$ " + String.format("%.2f", preco);
@@ -89,6 +93,10 @@ public class Espetaculo {
 	public void setAssentos(boolean[] assentos) {
 		this.assentos = assentos;
 	}
+	
+	public double getPreco() {
+        return preco;
+    }
 
 	public void setPreco(double preco) {
 		this.preco = preco;
