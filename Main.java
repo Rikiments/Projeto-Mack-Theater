@@ -18,11 +18,11 @@ public class Main {
                     // Cadastrar Espetáculo
                     System.out.println("Nome do Espetáculo:");
                     String nome = scanner.nextLine();
-                    System.out.println("Data do Espetáculo (ex: 15/05/2023):");
+                    System.out.println("Data do Espetáculo (DD/MM/AAAA):");
                     String data = scanner.nextLine();
-                    System.out.println("Hora do Espetáculo (ex: 19h30):");
+                    System.out.println("Hora do Espetáculo (HH:MM):");
                     String hora = scanner.nextLine();
-                    System.out.println("Preço do Espetáculo:");
+                    System.out.println("Preço do Ingresso:");
                     double preco = scanner.nextDouble();
                     scanner.nextLine();  // Limpa o buffer
 
@@ -62,8 +62,8 @@ public class Main {
 
                     System.out.println("Selecione o tipo de entrada:");
                     System.out.println("1 - Entrada Inteira");
-                    System.out.println("2 - Entrada Meia");
-                    System.out.println("3 - Entrada Professor");
+                    System.out.println("2 - Entrada Meia  50% do valor da entrada");
+                    System.out.println("3 - Entrada Professor 40% do valor da entrada");
                     int tipoEntrada = scanner.nextInt();
 
                     teatro.novaEntrada(tipoEntrada, assento);
