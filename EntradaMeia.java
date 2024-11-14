@@ -1,14 +1,10 @@
-
-public class EntradaMeia extends Entrada{
-	private double preco;
-
-    public EntradaMeia(int numeroDoAssento, double preco) {
-        super(numeroDoAssento);
-        this.preco = preco;
+public class EntradaMeia extends Entrada {
+    public EntradaMeia(int assento, double precoBase) {
+        super(assento, precoBase);
     }
 
     @Override
     public double calculaValor() {
-        return preco * 0.5;
+        return precoBase * 0.5; // 50% de desconto
     }
 }
