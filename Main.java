@@ -46,7 +46,6 @@ public class Main {
                 case 3:
                     // Compra de Entradas
                     teatro.apresentaEspetaculos();
-
                     System.out.print("Selecione um espetáculo: ");
                     int espetaculoNumero = scanner.nextInt();
                     scanner.nextLine();  // Limpa o buffer
@@ -54,19 +53,26 @@ public class Main {
                     teatro.selecionaEspetaculo(espetaculoNumero);
                     teatro.novaCompra();
 
-                    // Apresenta os assentos disponíveis para o espetáculo selecionado
-                    teatro.apresentaAssentosEspetaculo();
+                    boolean comprarMais = true;
+                    while (comprarMais) {
+                        // Apresenta os assentos disponíveis para o espetáculo selecionado
+                        teatro.apresentaAssentosEspetaculo();
 
-                    System.out.print("Selecione um assento: ");
-                    int assento = scanner.nextInt();
+                        System.out.print("Selecione um assento: ");
+                        int assento = scanner.nextInt();
 
-                    System.out.println("Selecione o tipo de entrada:");
-                    System.out.println("1 - Entrada Inteira");
-                    System.out.println("2 - Entrada Meia  50% do valor da entrada");
-                    System.out.println("3 - Entrada Professor 40% do valor da entrada");
-                    int tipoEntrada = scanner.nextInt();
+                        System.out.println("Selecione o tipo de entrada:");
+                        System.out.println("1 - Entrada Inteira");
+                        System.out.println("2 - Entrada Meia (50% do valor da entrada)");
+                        System.out.println("3 - Entrada Professor (40% do valor da entrada)");
+                        int tipoEntrada = scanner.nextInt();
 
-                    teatro.novaEntrada(tipoEntrada, assento);
+                        teatro.novaEntrada(tipoEntrada, assento);
+
+                        System.out.print("Deseja comprar mais um ingresso? (s/n): ");
+                        char resposta = scanner.next().toLowerCase().charAt(0);
+                        comprarMais = (resposta == 's');
+                    }
 
                     System.out.println("Digite o CPF do cliente para associar ao pedido:");
                     scanner.nextLine();  // Limpa o buffer
